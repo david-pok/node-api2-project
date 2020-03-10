@@ -48,7 +48,7 @@ function App() {
     axios
       .delete(`http://localhost:5000/api/posts/${id}`)
       .then(res => {
-        console.log("delete res", res);
+        // console.log("delete res", res);
         const newP = posts.filter(post => post.id !== id);
         setPosts(newP);
       })
@@ -78,7 +78,13 @@ function App() {
         <div key={post.id} className="posts">
           <p>{post.title}</p>
           <p>{post.contents}</p>
-          <button onClick={handleDelete}>Delete Post</button>
+          <button
+            onClick={() => {
+              handleDelete(post.id);
+            }}
+          >
+            Delete Post
+          </button>
         </div>
       ))}
     </div>
